@@ -17,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//User
+Route::POST('createUser','UserController@createUser');
+
+//DormRoom
+Route::POST('createDormRoom','DormRoomController@createDormRoom');
+
+Route::GET('showDormRoom/{id}','DormRoomController@showDormRoom');
+Route::GET('listDormRoom','DormRoomController@listDormRoom');
+
+Route::PUT('updateDormRoom/{id}','DormRoomController@updateDormRoom');
+Route::PUT('addDormRoom/{id}/{id_DormRoom}','DormRoomController@addDormRoom');
+Route::PUT('removeDormRoom/{id}/{id_DormRoom}','DormRoomController@removeDormRoom');
+
+Route::DELETE('deleteDormRoom/{id}','DormRoomController@deleteDormRoom');
