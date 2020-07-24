@@ -11,78 +11,78 @@ class CommentController extends Controller
 {
     // Create
     public function createComment(Request $request) {
-        $Comment = new Comment;
-        $Comment->content = $request->content;
-        $Comment->isPositive = $request->isPositive;
-        $Comment->save();
-        return response()->json($Comment);
+        $comment = new Comment;
+        $comment->content = $request->content;
+        $comment->isPositive = $request->isPositive;
+        $comment->save();
+        return response()->json($comment);
     }
 
     //Read
-    public function showComment($id) {
-        $Comment = Comment::findOrFail($id);
-        return response()->json($Comment);
+    public function showComment($user_id) {
+        $comment = Comment::findOrFail($user_id);
+        return response()->json($comment);
     }
 
     public function listComment(){
-        $Comment = Comment::all();
-        return response()->json([$Comment]);
+        $comment = Comment::all();
+        return response()->json([$comment]);
     }
 
     //Update
-    public function updateComment(Request $request, $id) {
-        $Comment = Comment::findOrFail($id);
+    public function updateComment(Request $request, $user_id) {
+        $comment = Comment::findOrFail($user_id);
 
         if($request->content) {
-            $Comment->content = $request->content;
+            $comment->content = $request->content;
         }
         if($request->numberOfResidents) {
-            $Comment->numberOfResidents = $request->numberOfResidents;
+            $comment->numberOfResidents = $request->numberOfResidents;
         }
         if($request->isPositive) {
-            $Comment->isPositive = $request->isPositive;
+            $comment->isPositive = $request->isPositive;
         }
-        $Comment->save();
-        return response()->json($Comment);
+        $comment->save();
+        return response()->json($comment);
     }
 
     //Delete
-    public function deleteComment($id) {
-        Comment::destroy($id);
+    public function deleteComment($user_id) {
+        Comment::destroy($user_id);
         return response()->json(['Produto deletado']);
     }
 
     //Update relação c/ DormRoom
-    public function addDormRoom($DormRoom_id, $Comment_id) {
-        $DormRoom = DormRoom::findOrFail($DormRoom_id);
-        $Comment = Comment::findOrFail($Comment_id);
-        $Comment->dorm_room_id = $DormRoom_id;
-        $Comment->save();
-        return response()->json($Comment);
+    public function addDormRoom($dormRoom_id, $comment_id) {
+        $DormRoom = DormRoom::findOrFail($dormRoom_id);
+        $comment = Comment::findOrFail($comment_id);
+        $comment->dorm_room_id = $dormRoom_id;
+        $comment->save();
+        return response()->json($comment);
     }
 
-    public function removeDormRoom($DormRoom_id, $Comment_id) {
-        $DormRoom = DormRoom::findOrFail($DormRoom_id);
-        $Comment = Comment::findOrFail($Comment_id);
-        $Comment->dorm_room_id = null;
-        $Comment->save();
-        return response()->json($Comment);
+    public function removeDormRoom($dormRoom_id, $comment_id) {
+        $DormRoom = DormRoom::findOrFail($dormRoom_id);
+        $comment = Comment::findOrFail($comment_id);
+        $comment->dorm_room_id = null;
+        $comment->save();
+        return response()->json($comment);
     }
 
     //Update relação c/ User
-    public function addUser($id, $Comment_id) {
-        $user = User::findOrFail($id);
-        $Comment = Comment::findOrFail($Comment_id);
-        $Comment->user_id = $id;
-        $Comment->save();
-        return response()->json($Comment);
+    public function addUser($user_id, $comment_id) {
+        $user = User::findOrFail($user_id);
+        $comment = Comment::findOrFail($comment_id);
+        $comment->user_id = $user_id;
+        $comment->save();
+        return response()->json($comment);
     }
 
-    public function removeUser($id, $Comment_id) {
-        $user = User::findOrFail($id);
-        $Comment = Comment::findOrFail($Comment_id);
-        $Comment->user_id = null;
-        $Comment->save();
-        return response()->json($Comment);
+    public function removeUser($user_id, $comment_id) {
+        $user = User::findOrFail($user_id);
+        $comment = Comment::findOrFail($comment_id);
+        $comment->user_id = null;
+        $comment->save();
+        return response()->json($comment);
     }
 }

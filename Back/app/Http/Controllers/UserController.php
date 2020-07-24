@@ -59,13 +59,13 @@ class UserController extends Controller
 
     //Read
     public function showUser($id) {
-        $User = User::findOrFail($id);
-        return response()->json($User);
+        $user = User::findOrFail($id);
+        return response()->json($user);
     }
 
     public function listUser(){
-        $User = User::all();
-        return response()->json([$User]);
+        $user = User::all();
+        return response()->json([$user]);
     }
 
     //Delete
