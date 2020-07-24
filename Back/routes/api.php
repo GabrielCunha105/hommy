@@ -21,6 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //User
 Route::POST('createUser','UserController@createUser');
 
+Route::GET('showUser/{id}','UserController@showUser');
+Route::GET('ListUser','UserController@listUser');
+
+Route::PUT('updateUser/{id}','UserController@updateUser');
+
+Route::DELETE('deleteUser/{id}','UserController@deleteUser');
+
 //DormRoom
 Route::POST('createDormRoom','DormRoomController@createDormRoom');
 

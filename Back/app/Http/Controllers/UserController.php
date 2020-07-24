@@ -23,4 +23,54 @@ class UserController extends Controller
         $user->save();
         return response()->json($user);
     }
+
+    //Update
+    public function updateUser(Request $request, $id) {
+        $user = User::findOrFail($id);
+
+        if($request->name) {
+            $user->name = $request->name;
+        }
+        if($request->email) {
+            $user->email = $request->email;
+        }
+        if($request->dateOfBirth) {
+            $user->dateOfBirth = $request->dateOfBirth;
+        }
+        if($request->gender) {
+            $user->gender = $request->gender;
+        }
+        if($request->isTenant) {
+            $user->isTenant = $request->isTenant;
+        }
+        if($request->registrationDate) {
+            $user->registrationDate = $request->registrationDate;
+        }
+        if($request->password) {
+            $user->password = $request->password;
+        }
+        if($request->college) {
+            $user->college = $request->college;
+        }
+
+        $user->save();
+        return response()->json($user);
+    }
+
+    //Read
+    public function showUser($id) {
+        $User = User::findOrFail($id);
+        return response()->json($User);
+    }
+
+    public function listUser(){
+        $User = User::all();
+        return response()->json([$User]);
+    }
+
+    //Delete
+    public function deleteUser($id) {
+        User::destroy($id);
+        return response()->json(['Produto deletado']);
+    }
 }
