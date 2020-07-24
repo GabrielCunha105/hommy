@@ -69,8 +69,8 @@ class DormRoomController extends Controller
         return response()->json(['Produto deletado']);
     }
 
-    //Update relação
-    public function addDormRoom($id, $DormRoom_id) {
+    //Update relação c/ User
+    public function addUser($id, $DormRoom_id) {
         $user = User::findOrFail($id);
         $DormRoom = DormRoom::findOrFail($DormRoom_id);
         $DormRoom->User_id = $id;
@@ -78,7 +78,7 @@ class DormRoomController extends Controller
         return response()->json($DormRoom);
     }
 
-    public function removeDormRoom($id, $DormRoom_id) {
+    public function removeUser($id, $DormRoom_id) {
         $user = User::findOrFail($id);
         $DormRoom = DormRoom::findOrFail($DormRoom_id);
         $DormRoom->User_id = null;

@@ -35,7 +35,24 @@ Route::GET('showDormRoom/{id}','DormRoomController@showDormRoom');
 Route::GET('listDormRoom','DormRoomController@listDormRoom');
 
 Route::PUT('updateDormRoom/{id}','DormRoomController@updateDormRoom');
-Route::PUT('addDormRoom/{id}/{id_DormRoom}','DormRoomController@addDormRoom');
-Route::PUT('removeDormRoom/{id}/{id_DormRoom}','DormRoomController@removeDormRoom');
+
+Route::PUT('addUser/{id}/{DormRoom_id}','DormRoomController@addUser');
+Route::PUT('removeUser{id}/{DormRoom_id}','DormRoomController@removeUser');
 
 Route::DELETE('deleteDormRoom/{id}','DormRoomController@deleteDormRoom');
+
+//Comment
+Route::POST('createComment','CommentController@createComment');
+
+Route::GET('showComment/{id}','CommentController@showComment');
+Route::GET('listComment','CommentController@listComment');
+
+Route::PUT('updateComment/{id}','CommentController@updateComment');
+
+Route::PUT('addDormRoom/{DormRoom_id}/{Comment_id}','CommentController@addDormRoom');
+Route::PUT('removeDormRoom/{DormRoom_id}/{Comment_id}','CommentController@removeDormRoom');
+
+Route::PUT('addUser/{id}/{Comment_id}','CommentController@addUser');
+Route::PUT('removeUser/{id}/{Comment_id}/{Comment_id}','CommentController@removeUser');
+
+Route::DELETE('deleteComment/{id}','CommentController@deleteComment');
