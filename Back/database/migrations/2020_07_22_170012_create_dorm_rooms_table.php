@@ -15,17 +15,20 @@ class CreateDormRoomsTable extends Migration
     {
         Schema::create('dorm_rooms', function (Blueprint $table) {
             $table->id();
-            $table->string("address");
-            $table->integer("numberOfRooms")->unsigned();
-            $table->integer("numberOfBathrooms")->unsigned();
-            $table->integer("numberOfResidents")->unsigned();
-            $table->unsignedBigInteger("user_id")->usigned()->nullable();
+            $table->string('address');
+            $table->integer('numberOfRooms')->unsigned();
+            $table->integer('numberOfBathrooms')->unsigned();
+            $table->integer('numberOfResidents')->unsigned();
+            $table->float('size');
+            $table->float('price')->unsigned();
+            $table->boolean('allowsAnimals');
+            $table->unsignedBigInteger('user_id')->usigned()->nullable();
             $table->timestamps();
         });
 
 
-        Schema::table("dorm_rooms", function (Blueprint $table) {
-            $table->foreign("user_id")->references("id")->on("users")->onDelete("set null");
+        Schema::table('dorm_rooms', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 
