@@ -3,14 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Comment;
+use App\User;
+use App\DormRoom;
 
 class CommentController extends Controller
 {
     // Create
     public function createComment(Request $request) {
         $Comment = new Comment;
-        $Comment->postTime = $request->postTime;
-        $Comment->editTime = $request->editTime;
         $Comment->content = $request->content;
         $Comment->isPositive = $request->isPositive;
         $Comment->save();
@@ -32,12 +33,6 @@ class CommentController extends Controller
     public function updateComment(Request $request, $id) {
         $Comment = Comment::findOrFail($id);
 
-        if($request->postTime) {
-            $Comment->postTime = $request->postTime;
-        }
-        if($request->editTime) {
-            $Comment->editTime = $request->editTime;
-        }
         if($request->content) {
             $Comment->content = $request->content;
         }
@@ -60,9 +55,9 @@ class CommentController extends Controller
     //Update relação c/ DormRoom
     public function addDormRoom($DormRoom_id, $Comment_id) {
         $DormRoom = DormRoom::findOrFail($DormRoom_id);
-        $Comment = Commennt::findOrFail($id);
+        $Comment = Comment::findOrFail($Comment_id);
         $Comment->dorm_room_id = $DormRoom_id;
-        $DormRoom->save();
+        $Comment->save();
         return response()->json($Comment);
     }
 
@@ -70,7 +65,7 @@ class CommentController extends Controller
         $DormRoom = DormRoom::findOrFail($DormRoom_id);
         $Comment = Comment::findOrFail($Comment_id);
         $Comment->dorm_room_id = null;
-        $DormRoom->save();
+        $Comment->save();
         return response()->json($Comment);
     }
 

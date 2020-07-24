@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::POST('createUser','UserController@createUser');
 
 Route::GET('showUser/{id}','UserController@showUser');
-Route::GET('ListUser','UserController@listUser');
+Route::GET('listUser','UserController@listUser');
 
 Route::PUT('updateUser/{id}','UserController@updateUser');
 
@@ -36,8 +36,8 @@ Route::GET('listDormRoom','DormRoomController@listDormRoom');
 
 Route::PUT('updateDormRoom/{id}','DormRoomController@updateDormRoom');
 
-Route::PUT('addUser/{id}/{DormRoom_id}','DormRoomController@addUser');
-Route::PUT('removeUser{id}/{DormRoom_id}','DormRoomController@removeUser');
+Route::PUT('addUserToDormRoom/{User_id}/{DormRoom_id}','DormRoomController@addUser');
+Route::PUT('removeUserFromDormRoom/{User_id}/{DormRoom_id}','DormRoomController@removeUser');
 
 Route::DELETE('deleteDormRoom/{id}','DormRoomController@deleteDormRoom');
 
@@ -49,10 +49,10 @@ Route::GET('listComment','CommentController@listComment');
 
 Route::PUT('updateComment/{id}','CommentController@updateComment');
 
-Route::PUT('addDormRoom/{DormRoom_id}/{Comment_id}','CommentController@addDormRoom');
-Route::PUT('removeDormRoom/{DormRoom_id}/{Comment_id}','CommentController@removeDormRoom');
+Route::PUT('addDormRoomToComment/{DormRoom_id}/{Comment_id}','CommentController@addDormRoom'); 
+Route::PUT('removeDormRoomFromComment/{DormRoom_id}/{Comment_id}','CommentController@removeDormRoom');
 
-Route::PUT('addUser/{id}/{Comment_id}','CommentController@addUser');
-Route::PUT('removeUser/{id}/{Comment_id}/{Comment_id}','CommentController@removeUser');
+Route::PUT('addUserToComment/{User_id}/{Comment_id}','CommentController@addUser');
+Route::PUT('removeUserFromComment/{User_id}/{Comment_id}','CommentController@removeUser');
 
 Route::DELETE('deleteComment/{id}','CommentController@deleteComment');

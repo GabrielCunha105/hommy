@@ -9,7 +9,7 @@ class UserController extends Controller
 {
     //Create
     public function createUser(Request $request) {
-        $User = new User;
+        $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->dateOfBirth = $request->dateOfBirth;

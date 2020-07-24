@@ -10,57 +10,57 @@ class DormRoomController extends Controller
 {
     // Create
     public function createDormRoom(Request $request) {
-        $DormRoom = new DormRoom;
-        $DormRoom->address = $request->address;
-        $DormRoom->numberOfRooms = $request->numberOfRooms;
-        $DormRoom->numberOfBathrooms = $request->numberOfBathrooms;
-        $DormRoom->numberOfResidents = $request->numberOfResidents;
-        $DormRoom->size = $request->size;
-        $DormRoom->price = $request->price;
-        $DormRoom->allowsAnimals = $request->allowsAnimals;
-        $DormRoom->save();
-        return response()->json($DormRoom);
+        $dormRoom = new DormRoom;
+        $dormRoom->address = $request->address;
+        $dormRoom->numberOfRooms = $request->numberOfRooms;
+        $dormRoom->numberOfBathrooms = $request->numberOfBathrooms;
+        $dormRoom->numberOfResidents = $request->numberOfResidents;
+        $dormRoom->size = $request->size;
+        $dormRoom->price = $request->price;
+        $dormRoom->allowsAnimals = $request->allowsAnimals;
+        $dormRoom->save();
+        return response()->json($dormRoom);
     }
 
     //Read
     public function showDormRoom($id) {
-        $DormRoom = DormRoom::findOrFail($id);
-        return response()->json($DormRoom);
+        $dormRoom = DormRoom::findOrFail($id);
+        return response()->json($dormRoom);
     }
 
     public function listDormRoom(){
-        $DormRoom = DormRoom::all();
-        return response()->json([$DormRoom]);
+        $dormRoom = DormRoom::all();
+        return response()->json([$dormRoom]);
     }
 
     //Update
     public function updateDormRoom(Request $request, $id) {
-        $DormRoom = DormRoom::findOrFail($id);
+        $dormRoom = DormRoom::findOrFail($id);
 
         if($request->address) {
-            $DormRoom->address = $request->address;
+            $dormRoom->address = $request->address;
         }
         if($request->numberOfRooms) {
-            $DormRoom->numberOfRooms = $request->numberOfRooms;
+            $dormRoom->numberOfRooms = $request->numberOfRooms;
         }
         if($request->numberOfBathrooms) {
-            $DormRoom->numberOfBathrooms = $request->numberOfBathrooms;
+            $dormRoom->numberOfBathrooms = $request->numberOfBathrooms;
         }
         if($request->numberOfResidents) {
-            $DormRoom->numberOfResidents = $request->numberOfResidents;
+            $dormRoom->numberOfResidents = $request->numberOfResidents;
         }
         if($request->size) {
-            $DormRoom->size = $request->size;
+            $dormRoom->size = $request->size;
         }
         if($request->price) {
-            $DormRoom->price = $request->price;
+            $dormRoom->price = $request->price;
         }
         if($request->allowsAnimals) {
-            $DormRoom->allowsAnimals = $request->allowsAnimals;
+            $dormRoom->allowsAnimals = $request->allowsAnimals;
         }
 
-        $DormRoom->save();
-        return response()->json($DormRoom);
+        $dormRoom->save();
+        return response()->json($dormRoom);
     }
 
     //Delete
@@ -70,19 +70,19 @@ class DormRoomController extends Controller
     }
 
     //Update relação c/ User
-    public function addUser($id, $DormRoom_id) {
-        $user = User::findOrFail($id);
-        $DormRoom = DormRoom::findOrFail($DormRoom_id);
-        $DormRoom->User_id = $id;
-        $DormRoom->save();
-        return response()->json($DormRoom);
+    public function addUser($user_id, $dormRoom_id) {
+        $user = User::findOrFail($user_id);
+        $dormRoom = DormRoom::findOrFail($dormRoom_id);
+        $dormRoom->User_id = $id;
+        $dormRoom->save();
+        return response()->json($dormRoom);
     }
 
-    public function removeUser($id, $DormRoom_id) {
-        $user = User::findOrFail($id);
-        $DormRoom = DormRoom::findOrFail($DormRoom_id);
-        $DormRoom->User_id = null;
-        $DormRoom->save();
-        return response()->json($DormRoom);
+    public function removeUser($user_id, $dormRoom_id) {
+        $user = User::findOrFail($user_id);
+        $dormRoom = DormRoom::findOrFail($dormRoom_id);
+        $dormRoom->User_id = null;
+        $dormRoom->save();
+        return response()->json($dormRoom);
     }
 }
