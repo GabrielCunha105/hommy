@@ -19,7 +19,15 @@ class CreateCommentsTable extends Migration
             $table->string('editTime');
             $table->string('content');
             $table->boolean('isPositive');
+            $table->unsignedBigInteger('user_id')->usigned()->nullable();
+            $table->unsignedBigInteger('dorm_room_id')->usigned()->nullable();
             $table->timestamps();
+        });
+
+
+        Schema::table('dorm_rooms', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('dorm_room_id')->references('id')->on('dorm_rooms')->onDelete('cascade');
         });
     }
 

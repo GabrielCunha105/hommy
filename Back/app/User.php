@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use DormRoom;
+use Comment;
 
 class User extends Authenticatable
 {
@@ -41,5 +42,8 @@ class User extends Authenticatable
     public function DormRooms(){
         return $this->hasMany('App\DormRoom');
     }
-  
+
+    public function Comments() {
+        return $this->hsMany('App\Comment');
+    }
 }
