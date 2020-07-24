@@ -49,7 +49,7 @@ class CommentController extends Controller
     //Delete
     public function deleteComment($user_id) {
         Comment::destroy($user_id);
-        return response()->json(['Produto deletado']);
+        return response()->json(['Comentario deletado']);
     }
 
     //Update relação c/ DormRoom

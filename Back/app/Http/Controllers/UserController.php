@@ -71,6 +71,6 @@ class UserController extends Controller
     //Delete
     public function deleteUser($id) {
         User::destroy($id);
-        return response()->json(['Produto deletado']);
+        return response()->json(['Usuario deletado']);
     }
 }
