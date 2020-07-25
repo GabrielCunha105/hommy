@@ -17,7 +17,7 @@ class UserController extends Controller
         $user->isTenant = $request->isTenant;
         $user->registrationDate = $request->registrationDate;
         $user->password = $request->password;
-        if($request->college) {
+        if($request->college && $request->isTenant) {
             $user->college = $request->college;
         }
         $user->save();
@@ -49,7 +49,7 @@ class UserController extends Controller
         if($request->password) {
             $user->password = $request->password;
         }
-        if($request->college) {
+        if($request->college && $user->isTenant) {
             $user->college = $request->college;
         }
 
