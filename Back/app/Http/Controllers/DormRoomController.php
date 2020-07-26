@@ -73,7 +73,9 @@ class DormRoomController extends Controller
     public function addUser($user_id, $dormRoom_id) {
         $user = User::findOrFail($user_id);
         $dormRoom = DormRoom::findOrFail($dormRoom_id);
-        $dormRoom->user_id = $user_id;
+        if(!$user->isTenant) {
+            $dormRoom->user_id = $user_id;
+        }
         $dormRoom->save();
         return response()->json($dormRoom);
     }
