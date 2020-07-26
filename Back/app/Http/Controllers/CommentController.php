@@ -19,8 +19,8 @@ class CommentController extends Controller
     }
 
     //Read
-    public function showComment($user_id) {
-        $comment = Comment::findOrFail($user_id);
+    public function showComment($id) {
+        $comment = Comment::findOrFail($id);
         return response()->json($comment);
     }
 
@@ -30,8 +30,8 @@ class CommentController extends Controller
     }
 
     //Update
-    public function updateComment(Request $request, $user_id) {
-        $comment = Comment::findOrFail($user_id);
+    public function updateComment(Request $request, $id) {
+        $comment = Comment::findOrFail($id);
 
         if($request->content) {
             $comment->content = $request->content;
@@ -47,8 +47,8 @@ class CommentController extends Controller
     }
 
     //Delete
-    public function deleteComment($user_id) {
-        Comment::destroy($user_id);
+    public function deleteComment($id) {
+        Comment::destroy($id);
         return response()->json(['Comentario deletado']);
     }
 
