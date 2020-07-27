@@ -5,18 +5,11 @@
 </ion-header>
 
 <ion-content>
-  <article>
-    <img src="../../assets/Apto1.jpeg">
-    <h1>Rio de Janeiro, RJ, Cidade Universitária, Rua Hélio de Almeida, 65</h1>
-    <h2>3 Quartos, 2 banheiros e cozinha completa. 
-      próximo da UFRj, em frente a ponto de ônibus.
-      vaga para 5 estudantes</h2>
-  </article>
-  <article>
-    <img src="../../assets/Apto3.jpeg">
-    <h1>Belo Horizonte, MG, Papula, Rua Agenor Goulart Filho, 65</h1>
-    <h2>2 Quartos, 1 banheiro e cozinha. 
-      próximo da UFMG, em frente a estação de trem.
-      vaga para 2 estudantes</h2>
-  </article>
+  <ion-card *ngFor="let dormRoom of DormRoomData">
+    <img src={{dormRoom.imageSource}}>
+    <h1>{{dormRoom.address}}</h1>
+    <h2>{{dormRoom.numberOfBedrooms}} quartos e {{dormRoom.numberOfBathrooms}} banheiros em {{dormRoom.size}} m².
+      {{dormRoom.allowsAnimals? 'P':'Não p'}}ermite animais. Atualmente possui {{dormRoom.numberOfResidents}} residentes.
+      Disponível por R$ {{dormRoom.price}}</h2>
+  </ion-card>
 </ion-content>
