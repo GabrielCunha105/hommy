@@ -11,10 +11,7 @@ class CommentController extends Controller
 {
     // Create
     public function createComment(Request $request) {
-        $comment = new Comment;
-        $comment->content = $request->content;
-        $comment->isPositive = $request->isPositive;
-        $comment->save();
+        $request->createComment($request);
         return response()->json($comment);
     }
 
@@ -32,17 +29,7 @@ class CommentController extends Controller
     //Update
     public function updateComment(Request $request, $id) {
         $comment = Comment::findOrFail($id);
-
-        if($request->content) {
-            $comment->content = $request->content;
-        }
-        if($request->numberOfResidents) {
-            $comment->numberOfResidents = $request->numberOfResidents;
-        }
-        if($request->isPositive) {
-            $comment->isPositive = $request->isPositive;
-        }
-        $comment->save();
+        $comment->updateComment($request);
         return response()->json($comment);
     }
 
