@@ -29,8 +29,14 @@ class DormRoomController extends Controller
 
     public function locatario($id) {
         $dormRoom = dormRoom::findOrFail($id);
-        $locatarios = $dormRoom->userLocatario->get();
+        $locatarios = $dormRoom->locatario();
         return response()->json($locatarios);
+    }
+
+    public function proprietario($id) {
+        $dormRoom = dormRoom::findOrFail($id);
+        $proprietario = $dormRoom->proprietario();
+        return response()->json($proprietario);
     }
 
     //Update
