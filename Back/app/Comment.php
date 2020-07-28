@@ -9,7 +9,7 @@ use DormRoom;
 class Comment extends Model
 {
 
-    // Create
+    //Create
     public function createComment(Request $request) {
         $this->content = $request->content;
         $this->isPositive = $request->isPositive;
@@ -30,11 +30,13 @@ class Comment extends Model
         $comment->save();
     }
 
-    public function user() {
+
+    //Relações
+    public function user() {                     //autor
         return $this->belongsTo('App\User');
     }
 
-    public function dormRoom() {
+    public function dormRoom() {                 //republica
         return $this->belongsTo('App\DormRoom');
     }
 }

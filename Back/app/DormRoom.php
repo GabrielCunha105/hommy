@@ -48,19 +48,20 @@ class DormRoom extends Model
         $this->save();
     }
 
-    public function user(){
+    //Relações
+    public function user(){                     //Proprietario
         return $this->belongsTo('App\User');
     }
 
-    public function userLocatario(){
+    public function userLocatario(){            //Locatario
         return $this->hasOne('App\User');
     }
 
-    public function comments() {
+    public function comments() {                //comentarios
         return $this->hasMany('App\Comment');
     }
 
-    public function userFavoritas(){
+    public function userFavoritas(){            //listas de favoritos
         return $this->belongsToMany('App\User');
     }
     

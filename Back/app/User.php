@@ -93,6 +93,7 @@ class User extends Authenticatable
         $this->save();
     }
 
+    //Update relação c/ aluguel
     public function alugar($dorm_room_id) {
         $dormRoom = DormRoom::findOrFail($dorm_room_id);
         $this->dorm_room_id = $dorm_room_id;
@@ -104,19 +105,20 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function dormRooms(){
+    //Relações
+    public function dormRooms(){                //republicas anunciadas
         return $this->hasMany('App\DormRoom');
     }
 
-    public function comments() {
+    public function comments() {                //comentarios publicados
         return $this->hsMany('App\Comment');
     }
 
-    public function dormRoom(){
+    public function dormRoom(){                 //republica alugada
         return $this->belongsTo('App\DormRoom');
     }
 
-    public function favoritas(){
+    public function favoritas(){                //lista de favoritos
         return $this->belongsToMany('App\DormRoom');
     }
        
