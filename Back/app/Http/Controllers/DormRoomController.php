@@ -39,6 +39,12 @@ class DormRoomController extends Controller
         return response()->json($proprietario);
     }
 
+    public function comentarios($id) {
+        $dormRoom = dormRoom::findOrFail($id);
+        $comentarios = $dormRoom->comentarios();
+        return response()->json($comentarios);
+    }
+
     //Update
     public function updateDormRoom(DormRoomRequest $request, $id) {
         $dormRoom = DormRoom::findOrFail($id);

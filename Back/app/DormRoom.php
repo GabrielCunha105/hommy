@@ -33,6 +33,11 @@ class DormRoom extends Model
         return $locatarios;
     }
 
+    public function comentarios() {
+        $locatarios = $this->comments;
+        return $locatarios;
+    }
+
     //Update
     public function updateDormRoom(DormRoomRequest $request) {
         if($request->address) {
