@@ -16,11 +16,13 @@ class UserController extends Controller
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->phone = $request->phone;
         $user->dateOfBirth = $request->dateOfBirth;
         $user->gender = $request->gender;
         $user->isTenant = $request->isTenant;
         $user->registrationDate = $request->registrationDate;
         $user->password = $request->password;
+        $user->cpf = $request->cpf;
         if($request->college && $request->isTenant) {
             $user->college = $request->college;
         }
@@ -38,6 +40,9 @@ class UserController extends Controller
         if($request->email) {
             $user->email = $request->email;
         }
+        if($request->phone) {
+            $user->phone = $request->phone;
+        }
         if($request->dateOfBirth) {
             $user->dateOfBirth = $request->dateOfBirth;
         }
@@ -52,6 +57,9 @@ class UserController extends Controller
         }
         if($request->password) {
             $user->password = $request->password;
+        }
+        if($request->cpf) {
+            $user->cpf = $request->cpf;
         }
         if($request->college && $user->isTenant) {
             $user->college = $request->college;
