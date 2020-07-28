@@ -62,7 +62,12 @@ class User extends Authenticatable
         $dorm_room_id = $this->dorm_room_id;
         $dorm_room = DormRoom::findOrFail($dorm_room_id);
         return $dorm_room;
-    } 
+    }
+
+    public function listaDeFavoritos() {
+        $favoritas = $this->favoritas;
+        return $favoritas;
+    }
 
     //Update
     public function updateUser(UserRequest $request) {

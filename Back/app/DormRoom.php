@@ -3,7 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use User;
+use App\User;
 use Comment;
 use App\Http\Requests\DormRoomRequest;
 
@@ -19,6 +19,18 @@ class DormRoom extends Model
         $this->price = $request->price;
         $this->allowsAnimals = $request->allowsAnimals;
         $this->save();
+    }
+
+    //Read
+    public function proprietario() {
+        $user_id = $this->user_id;
+        $proprietario = User::findOrFail($user_id);
+        return $proprietario;
+    }
+
+    public function locatario() {
+        $locatarios = $this->userLocatario->get();
+        return $locatarios;
     }
 
     //Update

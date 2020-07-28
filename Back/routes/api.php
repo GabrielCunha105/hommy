@@ -24,6 +24,7 @@ Route::POST('createUser','UserController@createUser');
 Route::GET('showUser/{id}','UserController@showUser');
 Route::GET('listUser','UserController@listUser');
 Route::GET('showResidenceOf/{id}','UserController@showResidenceOf');
+Route::GET('listaDeFavoritos/{id}','UserController@listaDeFavoritos');
 
 Route::PUT('updateUser/{id}','UserController@updateUser');
 
@@ -41,6 +42,7 @@ Route::POST('createDormRoom','DormRoomController@createDormRoom');
 Route::GET('showDormRoom/{id}','DormRoomController@showDormRoom');
 Route::GET('listDormRoom','DormRoomController@listDormRoom');
 Route::GET('locatario/{id}','DormRoomController@locatario');
+Route::GET('proprietario/{id}','DormRoomController@proprietario');
 
 Route::PUT('updateDormRoom/{id}','DormRoomController@updateDormRoom');
 

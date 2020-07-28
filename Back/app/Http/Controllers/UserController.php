@@ -43,6 +43,12 @@ class UserController extends Controller
         return response()->json($residence);
     } 
 
+    public function listaDeFavoritos($id) {
+        $user = User::findOrFail($id);
+        $favoritos = $user->listaDeFavoritos();
+        return response()->json($favoritos);
+    }
+
     //Delete
     public function deleteUser($id) {
         User::destroy($id);
