@@ -8,11 +8,11 @@ use Comment;
 
 class DormRoom extends Model
 {
-    public function User(){
+    public function user(){
         return $this->belongsTo('App\User');
     }
 
-    public function Comments() {
+    public function comments() {
         return $this->hasMany('App\Comment');
     }
 

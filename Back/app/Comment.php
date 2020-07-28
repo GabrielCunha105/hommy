@@ -8,11 +8,11 @@ use DormRoom;
 
 class Comment extends Model
 {
-    public function User() {
+    public function user() {
         return $this->belongsTo('App\User');
     }
 
-    public function DormRoom() {
+    public function dormRoom() {
         return $this->belongsTo('App\DormRoom');
     }
 }

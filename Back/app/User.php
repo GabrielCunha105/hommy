@@ -93,16 +93,17 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function DormRooms(){
+    public function dormRooms(){
         return $this->hasMany('App\DormRoom');
     }
 
-    public function Comments() {
+    public function comments() {
         return $this->hsMany('App\Comment');
     }
 
-    public function DormRoom(){
+    public function dormRoom(){
         return $this->belongsTo('App\DormRoom');
-       }
+    }
+       
        
 }
