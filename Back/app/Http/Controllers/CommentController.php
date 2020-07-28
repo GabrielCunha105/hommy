@@ -53,16 +53,16 @@ class CommentController extends Controller
     }
 
     //Update relação c/ DormRoom
-    public function addDormRoom($dormRoom_id, $comment_id) {
-        $DormRoom = DormRoom::findOrFail($dormRoom_id);
+    public function addDormRoom($dorm_room_id, $comment_id) {
+        $DormRoom = DormRoom::findOrFail($dorm_room_id);
         $comment = Comment::findOrFail($comment_id);
-        $comment->dorm_room_id = $dormRoom_id;
+        $comment->dorm_room_id = $dorm_room_id;
         $comment->save();
         return response()->json($comment);
     }
 
-    public function removeDormRoom($dormRoom_id, $comment_id) {
-        $DormRoom = DormRoom::findOrFail($dormRoom_id);
+    public function removeDormRoom($dorm_room_id, $comment_id) {
+        $DormRoom = DormRoom::findOrFail($dorm_room_id);
         $comment = Comment::findOrFail($comment_id);
         $comment->dorm_room_id = null;
         $comment->save();

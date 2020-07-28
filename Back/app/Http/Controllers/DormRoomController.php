@@ -71,9 +71,9 @@ class DormRoomController extends Controller
     }
 
     //Update relação c/ User
-    public function addUser($user_id, $dormRoom_id) {
+    public function addUser($user_id, $dorm_room_id) {
         $user = User::findOrFail($user_id);
-        $dormRoom = DormRoom::findOrFail($dormRoom_id);
+        $dormRoom = DormRoom::findOrFail($dorm_room_id);
         if(!$user->isTenant) {
             $dormRoom->user_id = $user_id;
         }
@@ -81,9 +81,9 @@ class DormRoomController extends Controller
         return response()->json($dormRoom);
     }
 
-    public function removeUser($user_id, $dormRoom_id) {
+    public function removeUser($user_id, $dorm_room_id) {
         $user = User::findOrFail($user_id);
-        $dormRoom = DormRoom::findOrFail($dormRoom_id);
+        $dormRoom = DormRoom::findOrFail($dorm_room_id);
         $dormRoom->user_id = null;
         $dormRoom->save();
         return response()->json($dormRoom);

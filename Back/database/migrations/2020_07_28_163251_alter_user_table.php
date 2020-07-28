@@ -14,10 +14,10 @@ class AlterUserTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('dormRoom_id')->nullable();
+            $table->unsignedBigInteger('dorm_room_id')->nullable();
         });
         Schema::table('users', function (Blueprint $table) {
-            $table->foreign('dormRoom_id')->references('id')->on('dorm_rooms')->onDelete('set null');
+            $table->foreign('dorm_room_id')->references('id')->on('dorm_rooms')->onDelete('set null');
         });
     }
 
@@ -29,7 +29,7 @@ class AlterUserTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('dormRoom_id');
+            $table->dropColumn('dorm_room_id');
         });
     }
 }
