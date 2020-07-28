@@ -104,6 +104,9 @@ class User extends Authenticatable
     public function dormRoom(){
         return $this->belongsTo('App\DormRoom');
     }
-       
+
+    public function favoritas(){
+        return $this->belongsToMany('App\DormRoom');
+    }
        
 }

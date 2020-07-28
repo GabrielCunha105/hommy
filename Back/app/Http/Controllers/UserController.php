@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\DormRoom;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UserRequest;
 
@@ -40,5 +41,19 @@ class UserController extends Controller
     public function deleteUser($id) {
         User::destroy($id);
         return response()->json(['Usuario deletado']);
+    }
+
+    //Update relação c/ favoritos
+
+    public function favoritar($user_id, $dormRoom_id) {
+        $user = User::findOrFail($user_id);
+        $user->favoritas()->attach($dormRoom_id);
+        return response()->json($user);
+    }
+
+    public function desfavoritar($user_id, $dormRoom_id) {
+        $user = User::findOrFail($user_id);
+        $user->favoritas()->detach($dormRoom_id);
+        return response()->json($user);
     }
 }

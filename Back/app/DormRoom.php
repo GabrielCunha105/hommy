@@ -16,4 +16,8 @@ class DormRoom extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function userFavoritas(){
+        return $this->belongsToMany('App\User');
+    }
+    
 }

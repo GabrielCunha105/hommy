@@ -26,6 +26,9 @@ Route::GET('listUser','UserController@listUser');
 
 Route::PUT('updateUser/{id}','UserController@updateUser');
 
+Route::PUT('favoritar/{user_id}/{dormRoom_id}','UserController@favoritar');
+Route::PUT('desfavoritar/{user_id}/{dormRoom_id}','UserController@desfavoritar');
+
 Route::DELETE('deleteUser/{id}','UserController@deleteUser');
 
 //DormRoom
