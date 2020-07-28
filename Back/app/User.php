@@ -57,6 +57,13 @@ class User extends Authenticatable
         $this->save();
     }
 
+    //Read
+    public function showResidenceOf() {
+        $dorm_room_id = $this->dorm_room_id;
+        $dorm_room = DormRoom::findOrFail($dorm_room_id);
+        return $dorm_room;
+    } 
+
     //Update
     public function updateUser(UserRequest $request) {
         if($request->name) {

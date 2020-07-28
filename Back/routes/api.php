@@ -23,6 +23,7 @@ Route::POST('createUser','UserController@createUser');
 
 Route::GET('showUser/{id}','UserController@showUser');
 Route::GET('listUser','UserController@listUser');
+Route::GET('showResidenceOf/{id}','UserController@showResidenceOf');
 
 Route::PUT('updateUser/{id}','UserController@updateUser');
 

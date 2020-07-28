@@ -37,6 +37,12 @@ class UserController extends Controller
         return response()->json([$user]);
     }
 
+    public function showResidenceOf($id) {
+        $user = User::findOrFail($id);
+        $residence = $user->showResidenceOf();
+        return response()->json($residence);
+    } 
+
     //Delete
     public function deleteUser($id) {
         User::destroy($id);
