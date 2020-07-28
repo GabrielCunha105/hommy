@@ -46,13 +46,11 @@ class DormRoomController extends Controller
         return response()->json(['Republica deletada']);
     }
 
-    //Update relação c/ User
+    //Update relação c/ User (proprietario)
     public function addUser($user_id, $dorm_room_id) {
         $user = User::findOrFail($user_id);
         $dormRoom = DormRoom::findOrFail($dorm_room_id);
-        if(!$user->isTenant) {
-            $dormRoom->user_id = $user_id;
-        }
+        $dormRoom->user_id = $user_id;
         $dormRoom->save();
         return response()->json($dormRoom);
     }

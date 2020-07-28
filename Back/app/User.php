@@ -51,7 +51,7 @@ class User extends Authenticatable
         $this->registrationDate = $request->registrationDate;
         $this->password = $request->password;
         $this->cpf = $request->cpf;
-        if($request->college && $request->isTenant) {
+        if($request->college) {
             $this->college = $request->college;
         }
         $this->save();
@@ -86,7 +86,7 @@ class User extends Authenticatable
         if($request->cpf) {
             $this->cpf = $request->cpf;
         }
-        if($request->college && $this->isTenant) {
+        if($request->college) {
             $this->college = $request->college;
         }
 
