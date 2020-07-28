@@ -50,6 +50,17 @@ class DormRoomRequest extends FormRequest
         }
     }
 
+    public function messages() {
+        return [
+            'numberOfRooms.min' => 'Numero de quartos deve ser maior que 0',
+            'numberOfBathrooms.min' => 'Numero de banheiros deve ser maior que 0',
+            'numberOfResidents.min' => 'Numero de quartos deve ser maior que 0',
+            'numberOfResidents.min' => 'Numero de residentes deve ser maior que 0',
+            'size.min' => 'Tamanho deve ser maior que 0',
+            'price.min' => 'Preço deve ser maior que 0',
+        ];
+    }
+
     protected function failedValidation(Validator $validator) {
         throw new HttpResponseException(response()->json($validator->errors(),422));
     }
