@@ -18,17 +18,17 @@ class Comment extends Model
     }
 
     //Update
-    public function updateComment(Request $request, $id) {
+    public function updateComment(Request $request) {
         if($request->content) {
-            $comment->content = $request->content;
+            $this->content = $request->content;
         }
         if($request->numberOfResidents) {
-            $comment->numberOfResidents = $request->numberOfResidents;
+            $this->numberOfResidents = $request->numberOfResidents;
         }
         if($request->isPositive) {
-            $comment->isPositive = $request->isPositive;
+            $this->isPositive = $request->isPositive;
         }
-        $comment->save();
+        $this->save();
     }
 
 
