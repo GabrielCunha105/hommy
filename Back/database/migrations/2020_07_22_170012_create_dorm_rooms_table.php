@@ -22,10 +22,9 @@ class CreateDormRoomsTable extends Migration
             $table->float('size');
             $table->float('price')->unsigned();
             $table->boolean('allowsAnimals');
-            $table->unsignedBigInteger('user_id')->usigned()->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });
-
 
         Schema::table('dorm_rooms', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

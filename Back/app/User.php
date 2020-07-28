@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use DormRoom;
 use Comment;
+use App\Http\Requests\UserRequest;
 
 class User extends Authenticatable
 {
@@ -39,6 +40,59 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Create
+    public function createUser(UserRequest $request) {
+        $this->name = $request->name;
+        $this->email = $request->email;
+        $this->phone = $request->phone;
+        $this->dateOfBirth = $request->dateOfBirth;
+        $this->gender = $request->gender;
+        $this->isTenant = $request->isTenant;
+        $this->registrationDate = $request->registrationDate;
+        $this->password = $request->password;
+        $this->cpf = $request->cpf;
+        if($request->college && $request->isTenant) {
+            $this->college = $request->college;
+        }
+        $this->save();
+    }
+
+    //Update
+    public function updateUser(UserRequest $request) {
+        if($request->name) {
+            $this->name = $request->name;
+        }
+        if($request->email) {
+            $this->email = $request->email;
+        }
+        if($request->phone) {
+            $this->phone = $request->phone;
+        }
+        if($request->dateOfBirth) {
+            $this->dateOfBirth = $request->dateOfBirth;
+        }
+        if($request->gender) {
+            $this->gender = $request->gender;
+        }
+        if($request->isTenant) {
+            $this->isTenant = $request->isTenant;
+        }
+        if($request->registrationDate) {
+            $this->registrationDate = $request->registrationDate;
+        }
+        if($request->password) {
+            $this->password = $request->password;
+        }
+        if($request->cpf) {
+            $this->cpf = $request->cpf;
+        }
+        if($request->college && $this->isTenant) {
+            $this->college = $request->college;
+        }
+
+        $this->save();
+    }
+
     public function DormRooms(){
         return $this->hasMany('App\DormRoom');
     }
@@ -46,4 +100,9 @@ class User extends Authenticatable
     public function Comments() {
         return $this->hsMany('App\Comment');
     }
+
+    public function DormRoom(){
+        return $this->belongsTo('App\DormRoom');
+       }
+       
 }
