@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use User;
 use Comment;
+use App\Http\Requests\DormRoomRequest;
 
 class DormRoom extends Model
 {
@@ -49,6 +50,10 @@ class DormRoom extends Model
 
     public function user(){
         return $this->belongsTo('App\User');
+    }
+
+    public function userLocatario(){
+        return $this->hasOne('App\User');
     }
 
     public function comments() {

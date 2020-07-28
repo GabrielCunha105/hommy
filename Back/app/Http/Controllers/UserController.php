@@ -44,7 +44,6 @@ class UserController extends Controller
     }
 
     //Update relação c/ favoritos
-
     public function favoritar($user_id, $dorm_room_id) {
         $user = User::findOrFail($user_id);
         $user->favoritas()->attach($dorm_room_id);
@@ -54,6 +53,19 @@ class UserController extends Controller
     public function desfavoritar($user_id, $dorm_room_id) {
         $user = User::findOrFail($user_id);
         $user->favoritas()->detach($dorm_room_id);
+        return response()->json($user);
+    }
+
+    //Update relação c/ aluguel
+    public function alugar($user_id, $dorm_room_id) {
+        $user = User::findOrFail($user_id);
+        $user->alugar($dorm_room_id);
+        return response()->json($user);
+    }
+
+    public function terminarAluguel($user_id) {
+        $user = User::findOrFail($user_id);
+        $user->Terminaraluguel();
         return response()->json($user);
     }
 }

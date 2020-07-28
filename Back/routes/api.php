@@ -28,6 +28,8 @@ Route::PUT('updateUser/{id}','UserController@updateUser');
 
 Route::PUT('favoritar/{user_id}/{dorm_room_id}','UserController@favoritar');
 Route::PUT('desfavoritar/{user_id}/{dorm_room_id}','UserController@desfavoritar');
+Route::PUT('alugar/{user_id}/{dorm_room_id}','UserController@alugar');
+Route::PUT('terminarAluguel/{user_id}','UserController@terminarAluguel');
 
 Route::DELETE('deleteUser/{id}','UserController@deleteUser');
 
@@ -36,6 +38,7 @@ Route::POST('createDormRoom','DormRoomController@createDormRoom');
 
 Route::GET('showDormRoom/{id}','DormRoomController@showDormRoom');
 Route::GET('listDormRoom','DormRoomController@listDormRoom');
+Route::GET('locatario/{id}','DormRoomController@locatario');
 
 Route::PUT('updateDormRoom/{id}','DormRoomController@updateDormRoom');
 

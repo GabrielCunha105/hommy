@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use DormRoom;
+use App\DormRoom;
 use Comment;
 use App\Http\Requests\UserRequest;
 
@@ -90,6 +90,17 @@ class User extends Authenticatable
             $this->college = $request->college;
         }
 
+        $this->save();
+    }
+
+    public function alugar($dorm_room_id) {
+        $dormRoom = DormRoom::findOrFail($dorm_room_id);
+        $this->dorm_room_id = $dorm_room_id;
+        $this->save();
+    }
+    
+    public function terminarAluguel() {
+        $this->dorm_room_id = null;
         $this->save();
     }
 

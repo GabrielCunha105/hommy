@@ -12,7 +12,7 @@ class DormRoomController extends Controller
     // Create
     public function createDormRoom(DormRoomRequest $request) {
         $dormRoom = new DormRoom;
-        $user->createDormRoom($request);
+        $dormRoom->createDormRoom($request);
         return response()->json($dormRoom);
     }
 
@@ -25,6 +25,12 @@ class DormRoomController extends Controller
     public function listDormRoom(){
         $dormRoom = DormRoom::all();
         return response()->json([$dormRoom]);
+    }
+
+    public function locatario($id) {
+        $dormRoom = dormRoom::findOrFail($id);
+        $locatarios = $dormRoom->userLocatario->get();
+        return response()->json($locatarios);
     }
 
     //Update
