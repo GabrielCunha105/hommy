@@ -11,7 +11,8 @@ class CommentController extends Controller
 {
     // Create
     public function createComment(Request $request) {
-        $request->createComment($request);
+        $comment = new Comment;
+        $comment->createComment($request);
         return response()->json($comment);
     }
 

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use User;
 use DormRoom;
+use Illuminate\Http\Request;
 
 class Comment extends Model
 {
