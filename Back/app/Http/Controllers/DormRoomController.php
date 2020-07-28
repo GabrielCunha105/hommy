@@ -12,14 +12,7 @@ class DormRoomController extends Controller
     // Create
     public function createDormRoom(DormRoomRequest $request) {
         $dormRoom = new DormRoom;
-        $dormRoom->address = $request->address;
-        $dormRoom->numberOfRooms = $request->numberOfRooms;
-        $dormRoom->numberOfBathrooms = $request->numberOfBathrooms;
-        $dormRoom->numberOfResidents = $request->numberOfResidents;
-        $dormRoom->size = $request->size;
-        $dormRoom->price = $request->price;
-        $dormRoom->allowsAnimals = $request->allowsAnimals;
-        $dormRoom->save();
+        $user->createDormRoom($request);
         return response()->json($dormRoom);
     }
 
@@ -37,30 +30,7 @@ class DormRoomController extends Controller
     //Update
     public function updateDormRoom(DormRoomRequest $request, $id) {
         $dormRoom = DormRoom::findOrFail($id);
-
-        if($request->address) {
-            $dormRoom->address = $request->address;
-        }
-        if($request->numberOfRooms) {
-            $dormRoom->numberOfRooms = $request->numberOfRooms;
-        }
-        if($request->numberOfBathrooms) {
-            $dormRoom->numberOfBathrooms = $request->numberOfBathrooms;
-        }
-        if($request->numberOfResidents) {
-            $dormRoom->numberOfResidents = $request->numberOfResidents;
-        }
-        if($request->size) {
-            $dormRoom->size = $request->size;
-        }
-        if($request->price) {
-            $dormRoom->price = $request->price;
-        }
-        if($request->allowsAnimals) {
-            $dormRoom->allowsAnimals = $request->allowsAnimals;
-        }
-
-        $dormRoom->save();
+        $dormRoom->updateDormRoom($request);
         return response()->json($dormRoom);
     }
 
