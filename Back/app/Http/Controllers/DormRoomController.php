@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\DormRoom;
 use App\User;
+use App\Http\Requests\DormRoomRequest;
 
 class DormRoomController extends Controller
 {
     // Create
-    public function createDormRoom(Request $request) {
+    public function createDormRoom(DormRoomRequest $request) {
         $dormRoom = new DormRoom;
         $dormRoom->address = $request->address;
         $dormRoom->numberOfRooms = $request->numberOfRooms;
@@ -34,7 +35,7 @@ class DormRoomController extends Controller
     }
 
     //Update
-    public function updateDormRoom(Request $request, $id) {
+    public function updateDormRoom(DormRoomRequest $request, $id) {
         $dormRoom = DormRoom::findOrFail($id);
 
         if($request->address) {
