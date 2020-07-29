@@ -125,7 +125,7 @@ class User extends Authenticatable
     }
 
     public function comments() {                //comentarios publicados
-        return $this->hsMany('App\Comment');
+        return $this->hasMany('App\Comment');
     }
 
     public function dormRoom(){                 //republica alugada

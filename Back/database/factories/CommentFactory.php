@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Comment::class, function (Faker $faker) {
     return [
-    'content' => $faker->text($maxNbChars = 100),
-    'isPositive' => $faker->boolean,
+        'content' => $faker->text($maxNbChars = 100),
+        'isPositive' => $faker->boolean,
     ];
 });

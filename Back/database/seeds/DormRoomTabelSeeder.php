@@ -11,6 +11,9 @@ class DormRoomTabelSeeder extends Seeder
      */
     public function run()
     {
-        factory (App\DormRoom::class,12)->create();
+        factory (App\DormRoom::class,12)->create()->each(function ($dormRoom) {
+            $comments = factory (App\Comment::class, 2)->make();
+            $dormRoom->comments()->saveMany($comments);
+        });
     }
 }
