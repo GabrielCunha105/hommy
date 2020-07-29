@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Comment;
 use App\Http\Requests\DormRoomRequest;
+Use Illuminate\Database\Eloquent\SoftDeletes;
 
 class DormRoom extends Model
 {
+    use softDeletes;
+    
     // Create
     public function createDormRoom(DormRoomRequest $request) {
         $this->address = $request->address;

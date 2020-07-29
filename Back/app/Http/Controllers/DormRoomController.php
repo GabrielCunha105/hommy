@@ -57,6 +57,11 @@ class DormRoomController extends Controller
         return response()->json($dormRoomList);
     }
 
+    public function onlyTrashed(){
+    $dormRoomList = DormRoom::onlyTrashed()->get();
+    return response()->json($dormRoomList);
+}
+
     //Update
     public function updateDormRoom(DormRoomRequest $request, $id) {
         $dormRoom = DormRoom::findOrFail($id);
@@ -67,6 +72,12 @@ class DormRoomController extends Controller
     //Delete
     public function deleteDormRoom($id) {
         DormRoom::destroy($id);
+        return response()->json(['Republica deletada']);
+    }
+
+    public function softDeleteDormRoom($id) {
+        $dormRoom = DormRoom::findOrFail($id);
+        $dormRoom->delete();
         return response()->json(['Republica deletada']);
     }
 

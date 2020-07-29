@@ -45,6 +45,7 @@ Route::GET('locatario/{id}','DormRoomController@locatario');
 Route::GET('proprietario/{id}','DormRoomController@proprietario');
 Route::GET('comentarios/{id}','DormRoomController@comentarios');
 Route::GET('queryByPriceAndSize','DormRoomController@queryByPriceAndSize');
+Route::GET('onlyTrashed','DormRoomController@onlyTrashed');
 
 Route::PUT('updateDormRoom/{id}','DormRoomController@updateDormRoom');
 
@@ -52,6 +53,7 @@ Route::PUT('addUserToDormRoom/{user_id}/{dorm_room_id}','DormRoomController@addU
 Route::PUT('removeUserFromDormRoom/{user_id}/{dorm_room_id}','DormRoomController@removeUser');  //
 
 Route::DELETE('deleteDormRoom/{id}','DormRoomController@deleteDormRoom');
+Route::DELETE('softDeleteDormRoom/{id}','DormRoomController@softDeleteDormRoom');
 
 //Comment
 Route::POST('createComment','CommentController@createComment');

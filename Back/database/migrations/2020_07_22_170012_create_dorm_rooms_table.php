@@ -29,6 +29,11 @@ class CreateDormRoomsTable extends Migration
         Schema::table('dorm_rooms', function (Blueprint $table) {
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+        Schema::table('dorm_rooms', function (Blueprint $table) {
+            $table->softDeletes();
+});
+
     }
 
     /**
