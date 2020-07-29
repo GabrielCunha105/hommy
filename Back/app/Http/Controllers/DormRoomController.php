@@ -45,6 +45,18 @@ class DormRoomController extends Controller
         return response()->json($comentarios);
     }
 
+    public function queryByPriceAndSize(Request $request) {
+        $dormRoomList = DormRoom::all();
+        if ($request->price) {
+            $dormRoomList = $dormRoomList->where('price','<=', $request->price);
+        }
+        if ($request->size) {
+            $dormRoomList = $dormRoomList->where('size','>=', $request->size);
+        }
+
+        return response()->json($dormRoomList);
+    }
+
     //Update
     public function updateDormRoom(DormRoomRequest $request, $id) {
         $dormRoom = DormRoom::findOrFail($id);

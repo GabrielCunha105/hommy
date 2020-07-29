@@ -8,11 +8,11 @@ use Faker\Generator as Faker;
 $factory->define(DormRoom::class, function (Faker $faker) {
     return [
         'address' => $faker->address,
-        'numberOfRooms' =>3,
-        'numberOfBathrooms' =>2,
-        'numberOfResidents' => 5,
-        'size' => 123.45,
-        'price' => 789.10,
+        'numberOfRooms' =>$faker->randomDigitNotNull,
+        'numberOfBathrooms' =>$faker->randomDigitNotNull,
+        'numberOfResidents' => $faker->randomDigitNotNull,
+        'size' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000.0),
+        'price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 1000.0),
         'allowsAnimals' => $faker->boolean,
     ];
 });

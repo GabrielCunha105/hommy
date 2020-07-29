@@ -44,6 +44,7 @@ Route::GET('listDormRoom','DormRoomController@listDormRoom');
 Route::GET('locatario/{id}','DormRoomController@locatario');
 Route::GET('proprietario/{id}','DormRoomController@proprietario');
 Route::GET('comentarios/{id}','DormRoomController@comentarios');
+Route::GET('queryByPriceAndSize','DormRoomController@queryByPriceAndSize');
 
 Route::PUT('updateDormRoom/{id}','DormRoomController@updateDormRoom');
 
