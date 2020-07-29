@@ -11,18 +11,11 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        factory (App\User::class,12)->create();
-        App\User::create([
-            'name' => 'Kujo Jotaro',
-            'email' => 'star@platinum.com',
-            'phone' => '13123123123',
-            'gender' => 'm',
-            'dateOfBirth' => '01/02/2003',
-            'phone' => '13123123123',
-            'isTenant' => 0,
-            'registrationDate' => '09/09/2009',
-            'password' => 'abc12345',
-            'cpf' => '52877807029',
-        ]);
+        factory (App\User::class,12)->create()->each(function ($user) {
+            $comments = factory (App\Comment::class, 2)->make();
+            $user->comments()->saveMany($comments);
+            $dormRooms = factory (App\DormRoom::class, 2)->make();
+            $user->dormRooms()->saveMany($dormRooms);
+        });;
     }
 }
