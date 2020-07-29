@@ -24,5 +24,12 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
+        'phone' => $faker->cellphoneNumber,
+        'gender' => 'N',
+        'dateOfBirth' => '01/01/2001',
+        'isTenant' => $faker->boolean,
+        'registrationDate' => '20/02/2020',
+        'cpf' => $faker->cpf,
+        'dorm_room_id' => factory('App\DormRoom')->create()->id,
     ];
 });

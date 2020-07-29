@@ -8,10 +8,12 @@ use Illuminate\Notifications\Notifiable;
 use App\DormRoom;
 use Comment;
 use App\Http\Requests\UserRequest;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
     use Notifiable;
+    use HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -49,6 +51,7 @@ class User extends Authenticatable
         $this->gender = $request->gender;
         $this->isTenant = $request->isTenant;
         $this->registrationDate = $request->registrationDate;
+        $this->password = bcrypt($request->password);
         $this->password = $request->password;
         $this->cpf = $request->cpf;
         if($request->college) {
