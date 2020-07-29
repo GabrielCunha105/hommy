@@ -14,6 +14,8 @@ class UserTableSeeder extends Seeder
         factory (App\User::class,12)->create()->each(function ($user) {
             $comments = factory (App\Comment::class, 2)->make();
             $user->comments()->saveMany($comments);
+            $dormRooms = factory (App\DormRoom::class, 2)->make();
+            $user->dormRooms()->saveMany($dormRooms);
         });;
     }
 }
