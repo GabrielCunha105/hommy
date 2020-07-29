@@ -52,7 +52,6 @@ class User extends Authenticatable
         $this->isTenant = $request->isTenant;
         $this->registrationDate = $request->registrationDate;
         $this->password = bcrypt($request->password);
-        $this->password = $request->password;
         $this->cpf = $request->cpf;
         if($request->college) {
             $this->college = $request->college;
@@ -96,7 +95,7 @@ class User extends Authenticatable
             $this->registrationDate = $request->registrationDate;
         }
         if($request->password) {
-            $this->password = $request->password;
+            $this->password = bcrypt($request->password);
         }
         if($request->cpf) {
             $this->cpf = $request->cpf;
