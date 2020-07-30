@@ -23,12 +23,15 @@
     <h4 class="recommended">Recomendados</h4>
   </ion-text>
   <ion-slides pager="true"[options]="slideOpts">
-    <ion-slide *ngFor="let republica of republicas">
+    <ion-slide *ngFor="let republica of republicasArray">
       <ion-card>
-        <img src="{{republica.imagem}}"/>
+        <!-- <img src="{{republica.imagem}}"/> -->
         <ion-card-header>
-          <ion-card-title><h5>{{republica.titulo}}</h5></ion-card-title>
-          <ion-card-subtitle>{{republica.subtitulo}}</ion-card-subtitle>
+          <ion-card-title><h5>{{republica.name}}</h5></ion-card-title>
+          <ion-card-subtitle>{{republica.address}}</ion-card-subtitle>
+          <ion-text><h6>{{republica.city}}</h6></ion-text>
+          <ion-text><h6>{{republica.district}}</h6></ion-text>
+          <ion-text><h6>{{republica.description}}</h6></ion-text>
         </ion-card-header>
       </ion-card>
     </ion-slide>
@@ -36,7 +39,7 @@
   <ion-text>
     <h4 class="next-to-you">Próximos a você</h4>
   </ion-text>
-  <ion-slides pager="true"[options]="slideOpts">
+  <!-- <ion-slides pager="true"[options]="slideOpts">
     <ion-slide *ngFor="let republica2 of republicas2">
       <ion-card>
         <img src="{{republica2.imagem}}"/>
@@ -46,5 +49,5 @@
         </ion-card-header>
       </ion-card>
     </ion-slide>
-  </ion-slides>
+  </ion-slides> -->
 </ion-content>

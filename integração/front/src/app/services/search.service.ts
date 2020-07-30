@@ -10,7 +10,7 @@ export class SearchService {
 
   constructor(public http: HttpClient) { }
 
-  getShowRepublics(): Observable<any> {
-    return this.http.get(this.apiURL + 'showRepublic');
+  getListRepublics(): Observable<any> {
+    return this.http.get(this.apiURL + 'listRepublic');
   }
 }
