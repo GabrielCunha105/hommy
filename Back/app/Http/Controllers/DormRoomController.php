@@ -54,6 +54,9 @@ class DormRoomController extends Controller
         if ($request->size) {
             $dormRoomList = $dormRoomList->where('size','>=', $request->size);
         }
+        if ($request->commentNb){
+            $dormList = $dormRoomList->whereHas('comments',function() {}, '>=',$request->commentNb);
+        }
         return DormRooms::collection($dormRoomList->paginate(10));
     }
 
