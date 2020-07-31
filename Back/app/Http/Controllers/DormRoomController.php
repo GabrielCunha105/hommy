@@ -54,7 +54,7 @@ class DormRoomController extends Controller
         if ($request->size) {
             $dormRoomList = $dormRoomList->where('size','>=', $request->size);
         }
-        return response()->json($dormRoomList);
+        return response()->json(DormRooms::collection($dormRoomList));
     }
 
     //Update
