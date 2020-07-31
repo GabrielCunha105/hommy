@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\DormRoom;
 use App\User;
 use App\Http\Requests\DormRoomRequest;
+use App\Http\Resources\DormRooms;
 
 class DormRoomController extends Controller
 {
@@ -19,12 +20,12 @@ class DormRoomController extends Controller
     //Read
     public function showDormRoom($id) {
         $dormRoom = DormRoom::findOrFail($id);
-        return response()->json($dormRoom);
+        return response()->json(new DormRooms($dormRoom));
     }
 
     public function listDormRoom(){
-        $dormRoom = DormRoom::all();
-        return response()->json([$dormRoom]);
+        $dormRoom = DormRoom::all()->paginate(10);
+        return response()->json(DormRooms::collection($dormRoom));
     }
 
     public function locatario($id) {
