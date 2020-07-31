@@ -33,7 +33,7 @@ class UserController extends Controller
     }
 
     public function listUser(){
-        $user = User::all();
+        $user = User::where('id','>=',1)->paginate(5);
         return response()->json([$user]);
     }
 
