@@ -47,14 +47,14 @@ class DormRoomController extends Controller
     }
 
     public function queryByPriceAndSize(Request $request) {
-        $dormRoomList = DormRoom::all();
+        $dormRoomList = DormRoom::where('id','>=',1);
         if ($request->price) {
             $dormRoomList = $dormRoomList->where('price','<=', $request->price);
         }
         if ($request->size) {
             $dormRoomList = $dormRoomList->where('size','>=', $request->size);
         }
-        return response()->json(DormRooms::collection($dormRoomList));
+        return DormRooms::collection($dormRoomList->paginate(10));
     }
 
     //Update
