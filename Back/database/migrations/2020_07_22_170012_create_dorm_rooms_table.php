@@ -22,6 +22,7 @@ class CreateDormRoomsTable extends Migration
             $table->float('size');
             $table->float('price')->unsigned();
             $table->boolean('allowsAnimals');
+            $table->string('photo')->nullable();
             $table->unsignedBigInteger('user_id')->nullable();
             $table->timestamps();
         });

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\User;
 use Comment;
 use App\Http\Requests\DormRoomRequest;
+use Illuminate\Support\Facades\Storage;
+
 
 class DormRoom extends Model
 {
@@ -18,6 +20,19 @@ class DormRoom extends Model
         $this->size = $request->size;
         $this->price = $request->price;
         $this->allowsAnimals = $request->allowsAnimals;
+        if (!storage::exists('localPhotos/'))
+            Storage::makeDirectory('localPhotos/', 0775,true);
+
+            $file=$request->file('photo');
+            $filename=rand().'.'.$file->getClientOriginalExtension();
+            $path=$file->storeAs('localPhotos',$filename);
+
+            /* $image=base64_decode($request->photo);
+            $filename=uniqid();
+            $path=storage_path('/app/localPhotos/' . $filename);
+            file_put_contents($path, $image); */
+
+            $this->photo=$path;
         $this->save();
     }
 
