@@ -79,10 +79,10 @@ class DormRoomController extends Controller
         $dormRoom = DormRoom::findOrFail($id);
         if ($dormRoom ->user_id == $user->id) {
             DormRoom::destroy($id);
-            return response()->json(['Republica deletada']);
+            return response()->json(['Republica deletada'], 200);
         }
         else {
-            return response()->json(['Permissão negada']);
+            return response()->json(['Permissão negada'], 401);
         }
         
     }
