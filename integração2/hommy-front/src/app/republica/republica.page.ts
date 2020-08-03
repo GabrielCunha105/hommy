@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CommentService } from '../services/comment.service';
+import { decimalDigest } from '@angular/compiler/src/i18n/digest';
 
 @Component({
   selector: 'app-republica',
@@ -31,7 +32,7 @@ export class RepublicaPage implements OnInit {
   }
 
   ngOnInit() {
-    this.comments = [{
+    /* this.comments = [{
       id: 1,
       username: 'Kujo Jotaro',
       text: 'Oraoraoraoraoraoraororaoraoraoraoroaroarraoao!'
@@ -50,7 +51,10 @@ export class RepublicaPage implements OnInit {
       id: 4,
       username: 'Giorno Giovanna',
       text: 'Mudamudamudamudamudamudamuda!'
-    }];
+    }]; */
+
+    this.comments = [this.commentService.listComments(this.republic_id)];
+    console.log(this.commentService.listComments(this.republic_id));
   }
 
   sendComment(form){

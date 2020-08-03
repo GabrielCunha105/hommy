@@ -13,4 +13,8 @@ export class CommentService {
   createComment(form):Observable<any> {
     return this.http.post(this.apiURL + 'createComment', form);
   }
+
+  listComments(republic_id):Observable<any> {
+    return this.http.get(this.apiURL + 'showRepublicWithComments/' + republic_id);
+  }
 }
