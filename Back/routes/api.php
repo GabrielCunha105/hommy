@@ -76,4 +76,5 @@ route::POST('login', 'API\PassportController@login');
 Route::group(['middleware' =>'auth:api'], function(){
     Route::GET('logout', 'API\PassportController@logout');
     Route::POST('getDetails', 'API\PassportController@getDetails');
+    Route::DELETE('deleteDormRoomWithAuth/{id}', 'DormRoomController@deleteDormRoomWithAuth');
 });

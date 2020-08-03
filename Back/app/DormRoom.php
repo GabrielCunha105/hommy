@@ -20,7 +20,7 @@ class DormRoom extends Model
         $this->size = $request->size;
         $this->price = $request->price;
         $this->allowsAnimals = $request->allowsAnimals;
-        if (!storage::exists('localPhotos/'))
+        /*if (!storage::exists('localPhotos/'))
             Storage::makeDirectory('localPhotos/', 0775,true);
 
             $file=$request->file('photo');
@@ -30,9 +30,9 @@ class DormRoom extends Model
             /* $image=base64_decode($request->photo);
             $filename=uniqid();
             $path=storage_path('/app/localPhotos/' . $filename);
-            file_put_contents($path, $image); */
+            file_put_contents($path, $image);
 
-            $this->photo=$path;
+            $this->photo=$path;*/
         $this->save();
     }
 

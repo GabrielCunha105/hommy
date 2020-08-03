@@ -7,6 +7,7 @@ use App\DormRoom;
 use App\User;
 use App\Http\Requests\DormRoomRequest;
 use App\Http\Resources\DormRooms;
+use Auth;
 
 class DormRoomController extends Controller
 {
@@ -71,6 +72,19 @@ class DormRoomController extends Controller
     public function deleteDormRoom($id) {
         DormRoom::destroy($id);
         return response()->json(['Republica deletada']);
+    }
+
+    public function deleteDormRoomWithAuth($id) {
+        $user = Auth::user();
+        $dormRoom = DormRoom::findOrFail($id);
+        if ($dormRoom ->user_id == $user->id) {
+            DormRoom::destroy($id);
+            return response()->json(['Republica deletada']);
+        }
+        else {
+            return response()->json(['Permissão negada']);
+        }
+        
     }
 
     //Update relação c/ User (proprietario)
