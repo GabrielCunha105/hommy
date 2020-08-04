@@ -17,4 +17,12 @@ export class CommentService {
   listComments(republic_id):Observable<any> {
     return this.http.get(this.apiURL + 'showRepublicWithComments/' + republic_id);
   }
+
+  updateComment(comment_id, form):Observable<any> {
+    return this.http.put(this.apiURL + 'updateComment/' + comment_id, form);
+  }
+
+  deleteComment(comment_id):Observable<any> {
+    return this.http.delete(this.apiURL + 'deleteComment/' + comment_id);
+  }
 }

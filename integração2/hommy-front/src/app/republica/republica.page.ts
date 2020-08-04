@@ -18,6 +18,9 @@ export class RepublicaPage implements OnInit {
   republic_id:number = JSON.parse(localStorage.getItem('republica')).id;
 
   comments = [];
+  comment_id: number = 0;
+  commentBuffer: string = '';
+  republic;
 
   constructor( 
     public formbuilder: FormBuilder,
@@ -71,11 +74,26 @@ export class RepublicaPage implements OnInit {
     console.log(form);
     console.log(form.value);
     this.editMode = false;
+    this.commentService.updateComment(this.comment_id, form.value).subscribe(
+      (res) => {
+        console.log(res);
+        this.commentBuffer = '';
+        this.editCommentForm.reset();
+        this.listComments(this.republic_id);
+      },(err) => {
+        console.log(err);
+      } 
+    );
   }
 
   toggleEdit(id){
+    this.comment_id = id;
+    for( let comment of this.comments ){  
+      if (comment.id == id){
+        this.commentBuffer = comment.text;
+      }
+    }
     this.editMode = true;
-    console.log(id)
   }
 
   deleteComment(id){
@@ -85,7 +103,7 @@ export class RepublicaPage implements OnInit {
   
   listComments(republic_id){
     this.commentService.listComments(republic_id).subscribe(
-      (res)=>{ 
+      (res)=>{
         this.comments = res.comments;
         console.log(this.comments); 
       },
