@@ -32,7 +32,7 @@ export class RepublicaPage implements OnInit {
   }
 
   ngOnInit() {
-    /* this.comments = [{
+    this.comments = [/* {
       id: 1,
       username: 'Kujo Jotaro',
       text: 'Oraoraoraoraoraoraororaoraoraoraoroaroarraoao!'
@@ -51,10 +51,8 @@ export class RepublicaPage implements OnInit {
       id: 4,
       username: 'Giorno Giovanna',
       text: 'Mudamudamudamudamudamudamuda!'
-    }]; */
-
-    this.comments = [this.commentService.listComments(this.republic_id)];
-    console.log(this.commentService.listComments(this.republic_id));
+    } */];
+    this.listComments(this.republic_id);
   }
 
   sendComment(form){
@@ -82,6 +80,19 @@ export class RepublicaPage implements OnInit {
 
   deleteComment(id){
     console.log('Mais que cancelado: ' + id);
+  }
+
+  
+  listComments(republic_id){
+    this.commentService.listComments(republic_id).subscribe(
+      (res)=>{ 
+        this.comments = res.comments;
+        console.log(this.comments); 
+      },
+      (err)=>{
+        console.log(err);
+      }
+    );
   }
 
 }
