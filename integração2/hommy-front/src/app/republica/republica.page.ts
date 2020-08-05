@@ -65,7 +65,7 @@ export class RepublicaPage implements OnInit {
     form.value.username = this.username;
     this.editMode = false;
     this.commentService.createComment(form.value).subscribe(
-      (res) => {alert(res); console.log(res);},
+      (res) => {console.log(res);},
       (err) => {console.log(err);}
     )
   }
@@ -97,12 +97,19 @@ export class RepublicaPage implements OnInit {
   }
 
   deleteComment(id){
-    console.log('Mais que cancelado: ' + id);
+    this.commentService.deleteComment(id).subscribe(
+      (res)=>{
+        console.log(res);
+        this.listComments(this.republic_id);
+      },(err) =>{
+        console.log(err);
+      }
+    );    
   }
 
   
-  listComments(republic_id){
-    this.commentService.listComments(republic_id).subscribe(
+  listComments(id){
+    this.commentService.listComments(id).subscribe(
       (res)=>{
         this.comments = res.comments;
         console.log(this.comments); 
